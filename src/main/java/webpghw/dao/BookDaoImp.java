@@ -15,6 +15,7 @@ public class BookDaoImp implements BookDao{
         statement.setString(1, book.getName());
         statement.setInt(2, book.getPrice());
         rowInserted = statement.executeUpdate() > 0;
+        connection.close();
         return rowInserted;
 
     }
@@ -29,8 +30,9 @@ public class BookDaoImp implements BookDao{
         statement.setInt(1, book.getId());
         statement.setString(2, book.getName());
         statement.setInt(3, book.getPrice());
-        statement.setInt(4, book.getId());
+        statement.setInt(4, book.getPublisherId());
         rowUpdated = statement.executeUpdate() > 0;
+        connection.close();
         return rowUpdated;
     }
 
@@ -42,6 +44,7 @@ public class BookDaoImp implements BookDao{
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, id);
         rowDeleted = statement.executeUpdate() > 0;
+        connection.close();
         return rowDeleted;
 
     }
@@ -59,10 +62,10 @@ public class BookDaoImp implements BookDao{
             String name = resultSet.getString("name");
             int price = resultSet.getInt("price");
             int publisher_id = resultSet.getInt("publisher_id");
-            Book book = new Book(id, name, price);
+            Book book = new Book(id, name, price, publisher_id);
             listBook.add(book);
         }
-
+        connection.close();
         return listBook;
     }
 }

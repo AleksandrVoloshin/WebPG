@@ -13,5 +13,5 @@ public interface BookService {
 
     void delete(int id) throws SQLException;
 
-    List<Book> getAll() throws SQLException;
+    List<Book> getAll();
 }

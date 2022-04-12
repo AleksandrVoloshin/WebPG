@@ -13,12 +13,13 @@ public class ConnectionManager {
     public static Connection getConnection() {
         if (connection == null) {
             String url = "jdbc:postgresql://localhost:5432/first_project_bookstore_db";
-            String user = "root";
-            String password = "root";
+            String user = "postgres";
+            String password = "rootroot";
 
             try {
+                Class.forName("org.postgresql.Driver");
                 connection = DriverManager.getConnection(url, user, password);
-            } catch (SQLException e) {
+            } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
         }

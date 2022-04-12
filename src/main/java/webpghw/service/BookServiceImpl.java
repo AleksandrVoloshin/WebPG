@@ -5,6 +5,7 @@ import webpghw.dao.BookDaoImp;
 import webpghw.model.Book;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookServiceImpl implements BookService{
@@ -32,7 +33,13 @@ public class BookServiceImpl implements BookService{
     }
 
     @Override
-    public List<Book> getAll() throws SQLException {
-        return bookDao.getAll();
+    public List<Book> getAll() {
+        List<Book> books = new ArrayList<>();
+        try {
+            books = bookDao.getAll();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return books;
     }
 }
