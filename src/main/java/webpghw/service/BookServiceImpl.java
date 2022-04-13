@@ -13,15 +13,15 @@ public class BookServiceImpl implements BookService{
     private static final BookDao bookDao = new BookDaoImp();
 
     @Override
-    public void create(String title, int price) throws SQLException {
-        Book book = new Book(title, price);
+    public void create(String name, int price) throws SQLException {
+        Book book = new Book(name, price);
         bookDao.create(book);
 
     }
 
     @Override
-    public void update(int id, String title, int price) throws SQLException{
-        Book book = new Book(id, title, price);
+    public void update(int id, String name, int price) throws SQLException{
+        Book book = new Book(id, name, price);
         bookDao.create(book);
 
     }

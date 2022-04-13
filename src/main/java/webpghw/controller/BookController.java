@@ -1,6 +1,7 @@
 package webpghw.controller;
 
 
+import webpghw.model.Book;
 import webpghw.service.BookService;
 import webpghw.service.BookServiceImpl;
 
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(urlPatterns = { "/books" })
 public class BookController extends HttpServlet {
@@ -20,7 +22,10 @@ public class BookController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("books", bookService.getAll());
+
+        List<Book> bookList = bookService.getAll();
+
+        req.setAttribute("books", bookList);
 
         RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/books.jsp");
         dispatcher.forward(req, resp);

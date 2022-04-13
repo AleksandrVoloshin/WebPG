@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface BookService {
 
-    void create(String title, int price) throws SQLException;
+    void create(String name, int price) throws SQLException;
 
-    void update(int id, String title, int price) throws SQLException;
+    void update(int id, String name, int price) throws SQLException;
 
     void delete(int id) throws SQLException;
 
